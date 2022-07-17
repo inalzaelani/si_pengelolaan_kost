@@ -60,14 +60,15 @@ class OccupantController extends Controller
         $data2 = Payment::create(
             [
                 "no_kamar" => $request->no_kamar,
-                "bukti_pembayaran" => $request->bukti_pembayaran = "",
+                "bukti_pembayaran" => $request->bukti_pembayaran = 0,
             ]
         );
         $data3 = Complaint::create(
             [
                 "no_kamar" => $request->no_kamar,
-                "keluhan" => $request->keluhan = "",
-                "bukti_keluhan" => $request->bukti_keluhan = "",
+                "keluhan" => $request->keluhan = 0,
+                "bukti_keluhan" => $request->bukti_keluhan = 0,
+                "status" => $request->status = "Belum Ada Keluhan",
             ]
         );
 
@@ -121,7 +122,35 @@ class OccupantController extends Controller
     {
 
         $data = Occupant::find($id);
-        $data->update($request->all());
+        $data->update([
+            "nama" => $request->nama,
+            "jenis_kelamin" => $request->jenis_kelamin,
+            "no_telp" => $request->no_telp,
+            "no_kamar" => $request->no_kamar,
+            "tipe_kamar" => $request->tipe_kamar,
+            "harga_kamar" => $request->harga_kamar,
+            "sewa" => $request->sewa,
+            "tanggal_bayar" => $request->tanggal_bayar,
+            "total_bayar" => $request->total_bayar,
+        ]);
+        $data2 = Invoice::find($id);
+        $data2->update([
+            "nama" => $request->nama,
+            "no_kamar" => $request->no_kamar,
+            "tipe_kamar" => $request->tipe_kamar,
+            "harga_kamar" => $request->harga_kamar,
+            "sewa" => $request->sewa,
+            "tanggal_bayar" => $request->tanggal_bayar,
+            "total_bayar" => $request->total_bayar,
+        ]);
+        $data3 = Complaint::find($id);
+        $data3->update([
+            "no_kamar" => $request->no_kamar,
+        ]);
+        $data4 = Payment::find($id);
+        $data4->update([
+            "no_kamar" => $request->no_kamar,
+        ]);
 
         return redirect()->route('penghuni')->with('success', 'Data Berhasil Diupdate');
     }
@@ -132,8 +161,13 @@ class OccupantController extends Controller
         $data->update([
             "username" => $request->username,
             "password" => bcrypt($request->password),
+            "nama" => $request->nama,
             "jenis_kelamin" => $request->jenis_kelamin,
             "no_telp" => $request->no_telp,
+        ]);
+        $data2 = Invoice::find($id);
+        $data2->update([
+            "nama" => $request->nama,
         ]);
 
         return redirect('/dashboardpenghuni')->with('success', 'Data Berhasil Diupdate');
@@ -157,7 +191,6 @@ class OccupantController extends Controller
     public function exportpdf()
     {
         $data = Occupant::all();
-
         view()->share('data', $data);
         $pdf = app('dompdf.wrapper');
         $pdf->loadView('datapenghuni.datapenghuni-pdf');

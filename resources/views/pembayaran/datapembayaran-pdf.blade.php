@@ -47,6 +47,7 @@
       $sum=0;
   @endphp
   @foreach ($data as $row)
+    @if($row->bukti_pembayaran!=0)
 <tr>
     <td>{{ $no++ }}</td>
     <td>{{ $row->nama }}</td>
@@ -58,6 +59,8 @@
 @php
      $sum+= $row->total_bayar;
 @endphp
+  @endif
+
 
   @endforeach
   <tr>

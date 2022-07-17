@@ -67,4 +67,14 @@ class PaymentController extends Controller
 
         return redirect('dashboardpenghuni')->with('success', 'Data Berhasil Ditambahkan!');
     }
+
+    public function hapuspembayaran(Request $request, $id)
+    {
+        $data = Payment::find($id);
+        $data->update([
+            'bukti_pembayaran' => $request->pembayaran = 0,
+        ]);
+
+        return redirect()->route('pembayaran');
+    }
 }

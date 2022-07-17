@@ -43,14 +43,15 @@
   </tr>
 
   @foreach ($data as $row)
-<tr>
+  @if ($row->keluhan!=0)
+  <tr>
     <td>{{ $no++ }}</td>
     <td>{{ $row->nama }}</td>
     <td>{{ $row->no_kamar }}</td>
     <td>{{ $row->keluhan }}</td>
-</tr>   
+  </tr>   
+  @endif
   @endforeach
-  
 </table>
 
 </body>

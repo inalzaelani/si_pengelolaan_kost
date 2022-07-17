@@ -12,21 +12,24 @@
                 <th scope="col">No Kamar</th>
                 <th scope="col">Keluhan</th>
                 <th scope="col">Bukti Keluhan</th>
+                <th scope="col">Status</th>
                 <th scope="col">Aksi</th>
             </tr>
                @foreach ($data as $row )
+               @if($row->keluhan!=0)
                <tr>
                 <td>{{ $row->nama }}</td>
                 <td>{{ $row->no_kamar }}</td>
                 <td>{{ $row->keluhan }}</td>
                 <td><img src="{{ asset('buktikeluhan/'.$row->bukti_keluhan ) }}" style="width :290px" alt=""></td>
-                
+                <td>{{ $row->status }}</td>
                 <td>
-                <a href=""><button type="button" class="btn btn-secondary">Konfirmasi</button></a>
-                <a href=""><button type="button" class="btn btn-danger" onclick="return confirm('Yakin Menghapus Data?')">Hapus</button></button></a>
+                <a href="/konfirmasikeluhan/ {{ $row->id }}"><button type="button" class="btn btn-secondary">Konfirmasi</button></a>
+                <a href="/hapuskeluhan/{{ $row->id }}"><button type="button" class="btn btn-danger" onclick="return confirm('Yakin Menghapus Data?')">Hapus</button></button></a>
                 </td>
             </tr>
-            @endforeach
+                @endif
+                @endforeach
              
         </table>
 @endsection

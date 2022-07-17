@@ -1,8 +1,15 @@
-@extends('layouts.master')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  @extends('layouts.master')
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-@section('content')
-
-    
+@section('content')    
     <div class="row justify-content-center">
       <h1 class="justify-content-center">Tambah Data Penghuni</h1>
         <div class="col-8">
@@ -22,10 +29,6 @@
                           <input type="password" name="password" class="form-control" id="password" required>
                           <input type="checkbox" onclick="showPassword()">Tujukan Password
                         </div>
-                        {{-- <div class="mb-3">
-                          <label for="exampleInputEmail1" class="form-label">level</label>
-                          <input type="text" class="form-control" id="" value="user" name="level" aria-describedby="emailHelp" required>
-                        </div> --}}
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Nama</label>
                             <input type="text" class="form-control" id="username" name="nama" aria-describedby="emailHelp" required>
@@ -42,18 +45,16 @@
                             <label for="exampleInputEmail1" class="form-label">Nomor Telepon</label>
                             <input type="number" class="form-control"  id="username" name="no_telp" aria-describedby="emailHelp" required>
                           </div>
-
                           <div class="mb-3">
                             <label for="tgl_bukti_identitas" class="form-label">Upload Bukti Identitas</label>
                             <input type="file" name="bukti_identitas" class="form-control"  value="" required>
                           </div>
-                          
                           @error('no_kamar')
                           <div class="alert alert-danger">{{ "Kamar Telah Terisi, Silakan pilih kamar lain!" }}</div>
                           @enderror
                           <div class="mb-3">
                             <label for="no_kamar" class="form-label">Nomor Kamar (1-25)</label>
-                            <input type="number" name="no_kamar" class="form-control" id="no_kamar" value="" onkeyup="add();" required>
+                            <input type="number" min="1" max="25"  name="no_kamar" class="form-control" id="no_kamar" value="" onkeyup="add();" required>
                           </div>
                           <div class="mb-3">
                             <label for="no_kamar" class="form-label">Tipe Kamar</label>
@@ -88,17 +89,20 @@
     </div>
 </div>
 @endsection
+</body>
+</html>l
+
 
 <script>
 function add() {
      
      var no_kamar = document.getElementById('no_kamar').value;
-     var result = parseInt(no_kamar);
+  
 
-      if (result<=10) {
+      if (no_kamar<=10) {
          document.getElementById('tipe_kamar').value = "Kamar Mandi Dalam" ;
          document.getElementById('harga_kamar').value = 750000 ;
-      } else if (10<result<=25) {
+      } else if (10<no_kamar<=25) {
         document.getElementById('tipe_kamar').value = "Kamar Mandi Luar" ;
         document.getElementById('harga_kamar').value = 600000;
       } else {

@@ -50,12 +50,17 @@ Route::group(['middleware' => ['auth:user', 'ceklevel:pemilik,pengelola']], func
 
     Route::get('/delete/{id}', [OccupantController::class, 'delete'])->name('delete');
 
+
+
     Route::get('/pembayaran', [PaymentController::class, 'index'])->name('pembayaran');
 
     Route::get('/tampilpembayaran/{id}', [PaymentController::class, 'tampilpembayaran'])->name('tampilpembayaran');
     Route::post('/updatepembayaran/{id}', [PaymentController::class, 'updatepembayaran'])->name('updatepembayaran');
+    Route::get('/hapuspembayaran/{id}', [PaymentController::class, 'hapuspembayaran'])->name('hapuspembayaran');
 
     Route::get('/keluhan', [ComplaintController::class, 'index'])->name('keluhan');
+    Route::get('/konfirmasikeluhan/{id}', [ComplaintController::class, 'konfirmasikeluhan'])->name('konfirmasikeluhan');
+    Route::get('/hapuskeluhan/{id}', [ComplaintController::class, 'hapuskeluhan'])->name('hapuskeluhan');
 
     Route::get('/exportinvoice', [LoginController::class, 'exportpdfinvoice'])->name('exportpdfinvoice');
 });

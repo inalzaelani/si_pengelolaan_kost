@@ -11,21 +11,16 @@
                 <tr>
                     <th scope="col">Tanggal Pembayaran</th>
                 </tr>
-             
-                   <tr>
-                    <td>{{ $data->updated_at->toDateString() }}</td>
+                <tr>
+                    <td>{{ $data->updated_at->isoFormat("dddd, D MMMM Y") }}</td>
                     <td>
                     <a href="/exportpdfinvoice/{{ $data->id }}"><button type="button" class="btn btn-info">Cetak Invoice</button></a>
-
                     </td>
                 </tr>
-                 
             </table>
             </div>
-         
     </div>
-</div>
-    
+</div> 
 @include('sweetalert::alert')
 @endsection
   

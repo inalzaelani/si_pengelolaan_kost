@@ -5,6 +5,7 @@
     
     <div class="row justify-content-center">
       <h1 class="justify-content-center">Keluhan Penghuni {{ Auth::guard('occupant')->user()->nama }}</h1>
+      <h3>Status Keluhan : {{ $data->status }}</h3>
         <div class="col-8">
             <div class="card">
                 <div class="cardbody">

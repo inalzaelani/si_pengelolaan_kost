@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('no_kamar');
             $table->string('keluhan');
             $table->string('bukti_keluhan');
+            $table->string('status');
         });
     }
 

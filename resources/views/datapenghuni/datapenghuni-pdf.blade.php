@@ -56,7 +56,15 @@
     <td>{{ $row->created_at }}</td>
 </tr>   
   @endforeach
-  
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>Jumlah Penghuni</td>
+    <td>{{ $no-1}}</td>
+    </tr>  
 </table>
 
 </body>
