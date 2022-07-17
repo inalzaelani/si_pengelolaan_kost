@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Models\Complaint;
+use App\Models\Invoice;
 use App\Models\Occupant;
+use App\Models\Payment;
 use Barryvdh\DomPDF\PDF;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -41,7 +43,7 @@ class OccupantController extends Controller
             [
                 "username" => $request->username,
                 "password" => bcrypt($request->password),
-                "level" => $request->input('level'),
+                "level" => $request->level = "user",
                 "nama" => $request->nama,
                 "jenis_kelamin" => $request->jenis_kelamin,
                 "no_telp" => $request->no_telp,
@@ -52,12 +54,34 @@ class OccupantController extends Controller
                 "sewa" => $request->sewa,
                 "tanggal_bayar" => $request->tanggal_bayar,
                 "total_bayar" => $request->total_bayar,
-
-
-
             ],
         );
 
+        $data2 = Payment::create(
+            [
+                "no_kamar" => $request->no_kamar,
+                "bukti_pembayaran" => $request->bukti_pembayaran = "",
+            ]
+        );
+        $data3 = Complaint::create(
+            [
+                "no_kamar" => $request->no_kamar,
+                "keluhan" => $request->keluhan = "",
+                "bukti_keluhan" => $request->bukti_keluhan = "",
+            ]
+        );
+
+        $data4 = Invoice::create(
+            [
+                "nama" => $request->nama,
+                "no_kamar" => $request->no_kamar,
+                "tipe_kamar" => $request->tipe_kamar,
+                "harga_kamar" => $request->harga_kamar,
+                "sewa" => $request->sewa,
+                "tanggal_bayar" => $request->tanggal_bayar,
+                "total_bayar" => $request->total_bayar,
+            ],
+        );
 
         if ($request->hasFile('bukti_identitas')) {
             $request->file('bukti_identitas')->move('buktiidentitas/', $request->file('bukti_identitas')->getClientOriginalName());
@@ -71,6 +95,12 @@ class OccupantController extends Controller
     {
         $data = Occupant::find($id);
         return view('datapenghuni.detailpenghuni', compact('data'));
+    }
+
+    public function dashboard($id)
+    {
+        $data = Occupant::find($id);
+        return view('dashboardpenghuni', compact('data'));
     }
 
     public function tampilkandata($id)
@@ -113,6 +143,13 @@ class OccupantController extends Controller
     {
         $data = Occupant::find($id);
         $data->delete();
+        $data2 = Payment::find($id);
+        $data2->delete();
+        $data3 = Complaint::find($id);
+        $data3->delete();
+        $data4 = Invoice::find($id);
+        $data4->delete();
+
 
         return redirect()->route('penghuni')->with('success', 'Data Berhasil Dihapus!');
     }

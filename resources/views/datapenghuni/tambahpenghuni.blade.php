@@ -22,10 +22,10 @@
                           <input type="password" name="password" class="form-control" id="password" required>
                           <input type="checkbox" onclick="showPassword()">Tujukan Password
                         </div>
-                        <div class="mb-3">
+                        {{-- <div class="mb-3">
                           <label for="exampleInputEmail1" class="form-label">level</label>
                           <input type="text" class="form-control" id="" value="user" name="level" aria-describedby="emailHelp" required>
-                        </div>
+                        </div> --}}
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Nama</label>
                             <input type="text" class="form-control" id="username" name="nama" aria-describedby="emailHelp" required>
@@ -34,8 +34,8 @@
                             <label for="exampleInputEmail1" class="form-label">Jenis Kelamin</label>
                             <select class="form-select" name="jenis_kelamin" aria-label="Default select example" required>
                                 <option selected>Pilih Jenis Kelamin</option>
-                                <option value="L">Laki-laki</option>
-                                <option value="P">Perempuan</option>
+                                <option value="Laki-laki">Laki-laki</option>
+                                <option value="Perempuan">Perempuan</option>
                               </select>
                           </div>
                           <div class="mb-3">

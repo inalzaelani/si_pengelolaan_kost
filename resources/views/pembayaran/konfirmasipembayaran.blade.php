@@ -2,7 +2,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 @section('content')
 <div class="container">
-  <h1 class="text-center">Edit Data Penghuni</h1>
+  <h1 class="text-center">Konfirmasi Pembayaran</h1>
 
 
   <div class="row justify-content-center">
@@ -13,22 +13,22 @@
             @csrf
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Nama</label>
-              <input type="text" class="form-control" id="username" name="nama" aria-describedby="emailHelp" value="{{ $data->nama }}" disabled>
+              <input type="text" class="form-control" id="username" name="nama" aria-describedby="emailHelp" value="{{ $data->nama }}">
             </div>
             @error('no_kamar')
             <div class="alert alert-danger">{{ "Kamar Telah Terisi, Silakan pilih kamar lain!" }}</div>
             @enderror
             <div class="mb-3">
               <label for="no_kamar" class="form-label">Nomor Kamar (1-25)</label>
-              <input type="number" name="no_kamar" class="form-control" id="no_kamar" value="{{ $data->no_kamar }}" onkeyup="add();" disabled>
+              <input type="number" name="no_kamar" class="form-control" id="no_kamar" value="{{ $data->no_kamar }}" onkeyup="add();">
             </div>
             <div class="mb-3">
               <label for="no_kamar" class="form-label">Tipe Kamar</label>
-              <input type="text" name="tipe_kamar" class="form-control" id="tipe_kamar" value="{{ $data->tipe_kamar }}" onkeyup="add();" disabled>
+              <input type="text" name="tipe_kamar" class="form-control" id="tipe_kamar" value="{{ $data->tipe_kamar }}" onkeyup="add();">
             </div>
             <div class="mb-3">
               <label for="no_kamar" class="form-label">Harga Kamar</label>
-              <input type="number" name="harga_kamar" class="form-control" id="harga_kamar" value="{{ $data->harga_kamar }}" onkeyup="add();" disabled>
+              <input type="number" name="harga_kamar" class="form-control" id="harga_kamar" value="{{ $data->harga_kamar }}" onkeyup="add();">
             </div>
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Sewa</label>
@@ -44,7 +44,7 @@
                           </div>
                           <div class="mb-3">
                             <label for="no_kamar" class="form-label">Total bayar</label>
-                            <input type="text" name="total_bayar" class="form-control" id="total_bayar" value="{{ $data->total_bayar }}" onkeyup="sewa()" disabled>
+                            <input type="text" name="total_bayar" class="form-control" id="total_bayar" value="{{ $data->total_bayar }}" onkeyup="sewa()">
                           </div>
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>

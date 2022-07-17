@@ -59,9 +59,6 @@
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="{{ asset('template/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
-        </div>
         <div class="info">
           @if (Str::length(Auth::guard('occupant')->user())>0)
           <a href="" class="d-block">{{ Auth::guard('occupant')->user()->nama }}</a>
@@ -70,14 +67,6 @@
           @endif
         </div>
       </div>
-
-      @auth('occupant')
-      <p>Penghuni</p>
-      @endauth
-
-      @auth('user')
-      <p>Admin</p>
-      @endauth
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
@@ -184,6 +173,12 @@
                 </a>
               </li>
               <li class="nav-item">
+                <a href="/invoice/{{ Auth::guard('occupant')->user()->id }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Invoice Pembayaran</p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="/tampilkeluhan/{{ Auth::guard('occupant')->user()->id }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Penyampaian Keluhan</p>
@@ -194,7 +189,7 @@
           @endif
           @endif
           @if (Str::length(Auth::guard('user')->user())>0)
-          @if (Str::length(Auth::guard('user')->user()->level=="pemilik"))
+          @if (Str::length(Auth::guard('user')->user()->level==="pemilik"))
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-book"></i>

@@ -42,7 +42,7 @@
                         </tr>
                         <tr>
                             <th>Tanggal masuk</th>
-                            <td>{{ $data->created_at }}</td>
+                            <td>{{ $data->created_at->toDateString() }}</td>
                         </tr>
                         <tr>
                             <th>Tanggal Bayar Sewa Berikutnya</th>

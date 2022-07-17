@@ -6,6 +6,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\OccupantController;
 use App\Http\Controllers\ComplaintController;
+use App\Http\Controllers\InvoiceController;
+use App\Models\Invoice;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,10 +70,11 @@ Route::group(['middleware' => ['auth:occupant', 'ceklevel:user']], function () {
     Route::get('/tampilpembayaranpenghuni/{id}', [PaymentController::class, 'tampilpembayaranpenghuni'])->name('tampilpembayaranpenghuni');
     Route::post('/insertpembayaran/{id}', [PaymentController::class, 'insertpembayaran'])->name('insertpembayaran');
 
+    Route::get('/invoice/{id}', [InvoiceController::class, 'index'])->name('index');
+    Route::get('/exportpdfinvoice/{id}', [InvoiceController::class, 'exportpdf'])->name('exportinvoice');
+
     Route::get('/tampilkeluhan/{id}', [ComplaintController::class, 'tampilkeluhan'])->name('tampilkeluhan');
     Route::post('/insertkeluhan/{id}', [ComplaintController::class, 'insertkeluhan'])->name('insertkeluhan');
-
-    
 });
 
 Route::post('/postlogin', [LoginController::class, 'postlogin'])->name('postlogin');

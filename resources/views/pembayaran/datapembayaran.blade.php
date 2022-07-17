@@ -10,6 +10,7 @@
             <tr>
                 <th scope="col">Nama</th>
                 <th scope="col">No Kamar</th>
+                <th scope="col">Tanggal Pembayaran</th>
                 <th scope="col">Bukti Pembayaran</th>
                 <th scope="col">Aksi</th>
             </tr>
@@ -17,6 +18,7 @@
                <tr>
                 <td>{{ $row->nama }}</td>
                 <td>{{ $row->no_kamar }}</td>
+                <td>{{ $row->updated_at }}</td>
                 <td><img src="{{ asset('buktipembayaran/'.$row->bukti_pembayaran ) }}" style="width :290px" alt=""></td>
                 <td>
                 <a href="/tampilpembayaran/{{ $row->id }}"><button type="button" class="btn btn-secondary">Konfirmasi</button></a>

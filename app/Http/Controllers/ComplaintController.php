@@ -11,7 +11,7 @@ class ComplaintController extends Controller
     public function index()
     {
         $data = DB::table('complaints')
-            ->join('occupants', 'occupants.no_kamar', '=', 'complaints.no_kamar')
+            ->join('occupants', 'occupants.id', '=', 'complaints.id')
             ->get();
         return view('keluhan.datakeluhan')->with('data', $data);
     }
@@ -19,20 +19,15 @@ class ComplaintController extends Controller
     public function tampilkeluhan($id)
     {
         $data = DB::table('complaints')
-            ->join('occupants', 'occupants.no_kamar', '=', 'complaints.no_kamar')
+            ->join('occupants', 'occupants.id', '=', 'complaints.id')
             ->get();
         return view('keluhan.tambahkeluhan')->with('data', $data);
     }
 
-    public function insertkeluhan(Request $request)
+    public function insertkeluhan(Request $request, $id)
     {
-        $data = Complaint::create(
-            [
-                "no_kamar" => $request->no_kamar,
-                "bukti_keluhan" => $request->hasFile('bukti_keluhan'),
-                "keluhan" => $request->keluhan,
-            ],
-        );
+        $data = Complaint::find($id);
+        $data->update($request->all());
         if ($request->hasFile('bukti_keluhan')) {
             $request->file('bukti_keluhan')->move('buktikeluhan/', $request->file('bukti_keluhan')->getClientOriginalName());
             $data->bukti_keluhan = $request->file('bukti_keluhan')->getClientOriginalName();

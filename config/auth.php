@@ -48,6 +48,10 @@ return [
             'driver' => 'session',
             'provider' => 'users'
         ],
+        'invoice' => [
+            'driver' => 'session',
+            'provider' => 'users'
+        ],
     ],
 
     /*
@@ -76,6 +80,10 @@ return [
         'occupants' => [
             'driver' => 'eloquent',
             'model' => App\Models\Occupant::class,
+        ],
+        'invoices' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Invoice::class,
         ],
     ],
 

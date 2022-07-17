@@ -11,10 +11,10 @@
                 <div class="cardbody">
                     <form action="/insertpembayaran/{{ Auth::guard('occupant')->user()->id }}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        <div class="mb-3">
+                        {{-- <div class="mb-3">
                             <label for="no_kamar" class="form-label">Nomor Kamar</label>
                             <input type="number" name="no_kamar" class="form-control" id="no_kamar" value="{{ Auth::guard('occupant')->user()->no_kamar }}" onkeyup="" required>
-                          </div>
+                          </div> --}}
                           <div class="mb-3">
                             <label for="" class="form-label">Upload Bukti Pembayaran</label>
                             <input type="file" name="bukti_pembayaran" class="form-control"  value="" required>
