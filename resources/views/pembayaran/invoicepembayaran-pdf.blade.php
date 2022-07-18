@@ -2,6 +2,7 @@
 <html lang="en">
 @php
 use Carbon\Carbon;
+$skrg=Carbon::now();
 @endphp
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -14,10 +15,13 @@ use Carbon\Carbon;
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+<div class="container">
+
+
 <body>
     <h1>Rumah Kost Budi Sari</h1>
 <br>
-PK/{{ $data->updated_at->toDateString() }}/{{ $data->id }}
+PK/{{ $data->updated_at->isoFormat("D MMMM Y") }}/{{ $data->id }}
 <br>
 <b>Telah Diterima <br></b>
 Dari:  {{ $data->nama }} <br>
@@ -39,5 +43,10 @@ Bandung, {{ $data->updated_at->isoFormat(" D MMMM Y") }}
         <td><br><br>{{ $data->nama }}</td>    
     </tr>
   </table>
+<br>
+  Dicetak Pada {{ $skrg }}
+
+</div>
+  
 </body>
 </html>

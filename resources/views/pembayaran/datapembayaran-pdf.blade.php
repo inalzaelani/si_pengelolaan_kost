@@ -28,18 +28,19 @@
 </head>
 <body>
     @php
+    use Carbon\carbon;
+
     $no=1;
-    $bulan=date('F');
+    $bulan=Carbon::now();
 @endphp
 
-<h1 class="justify">Data Pembayaran Kost Bulan {{ $bulan }}</h1>
+<h1 class="justify">Data Pembayaran Kost Bulan {{ $bulan->isoFormat("MMMM") }}</h1>
 
 <table id="customers">
   <tr>
     <th>No</th>
     <th>Nama</th>
     <th>No Kamar</th>
-    <th>Tanggal Bayar</th>
     <th>Tanggal Pembayaran</th>
     <th>Jumlah Pembayaran</th>
   </tr>
@@ -52,9 +53,8 @@
     <td>{{ $no++ }}</td>
     <td>{{ $row->nama }}</td>
     <td>{{ $row->no_kamar }}</td>
-    <td>{{ $row->tanggal_bayar }}</td>
-    <td>{{ $row->created_at }}</td>
-    <td>{{ $row->total_bayar }}</td>
+    <td>{{ (new Carbon($row->updated_at ))->isoFormat("D MMMM Y") }}</td>
+    <td>Rp. {{ number_format($row->total_bayar,0,',','.') }}</td>
 </tr>
 @php
      $sum+= $row->total_bayar;
@@ -67,11 +67,10 @@
     <td></td>
     <td></td>
     <td></td>
-    <td></td>
     <td>Total Pendapatan</td>
-     <td>{{ $sum }}</td>
+     <td>Rp. {{ number_format($sum,0,',','.') }}</td>
     </tr>   
 </table>
-
+Dicetak Pada {{ $bulan }}
 </body>
 </html>

@@ -21,8 +21,6 @@ $sisahari = ($now->diff($created)->d)
 {{-- @dd($sisahari) --}}
 
 <div class="container">
-
-
 @if($now->diff($created)->invert>0)
 <div class="small-box bg-danger">
     <div class="inner">

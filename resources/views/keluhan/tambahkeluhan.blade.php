@@ -2,11 +2,12 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 @section('content')
 
-    
+  <div class="container">
     <div class="row justify-content-center">
-      <h1 class="justify-content-center">Keluhan Penghuni {{ Auth::guard('occupant')->user()->nama }}</h1>
-      <h3>Status Keluhan : {{ $data->status }}</h3>
+      
         <div class="col-8">
+          <h1 class="justify-content-center">Keluhan Penghuni {{ Auth::guard('occupant')->user()->nama }}</h1>
+          <h6>Status Keluhan : {{ $data->status }}</h6>
             <div class="card">
                 <div class="cardbody">
                     <form action="/insertkeluhan/{{ Auth::guard('occupant')->user()->id }}" method="POST" enctype="multipart/form-data">
@@ -31,5 +32,6 @@
         </div>
     </div>
 </div>
+</div>  
 @endsection
 

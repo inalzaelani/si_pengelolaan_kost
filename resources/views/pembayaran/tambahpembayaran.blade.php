@@ -2,12 +2,15 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 @section('content')
 
-    
-    <div class="row justify-content-center">
-      <h1 class="justify-content-center">Pembayaran Penghuni {{ Auth::guard('occupant')->user()->nama }}</h1>
-        <div class="col-8">
+<div class="container">
+   <div class="row justify-content-center">
+    {{-- <div class="container justify-content-center"">
+      <h1 class="">Pembayaran Sewa Penghuni {{ Auth::guard('occupant')->user()->nama }}</h1>
+    </div> --}}
+        <div class="col-8 mt-3">
+          <h1 class="">Pembayaran Sewa Penghuni {{ Auth::guard('occupant')->user()->nama }}</h1>
             <div class="card">
-              <h4 class="justify-content-center">Transfer ke No Rekening XXXXXXXXXXXXX <br> Bank XXX atas nama XXXX sebesar Rp{{ Auth::guard('occupant')->user()->total_bayar }} </h4>
+              <h4 class="justify-content-center">Transfer ke No Rekening XXXXXXXXXXXXX <br> Bank XXX atas nama XXXX sebesar Rp. {{number_format(Auth::guard('occupant')->user()->total_bayar,0,',','.')  }} </h4>
                 <div class="cardbody">
                     <form action="/insertpembayaran/{{ Auth::guard('occupant')->user()->id }}" method="POST" enctype="multipart/form-data">
                         @csrf
@@ -27,5 +30,6 @@
         </div>
     </div>
 </div>
+</div>   
 @endsection
 

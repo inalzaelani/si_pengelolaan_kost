@@ -28,11 +28,13 @@
 </head>
 <body>
     @php
+    use Carbon\Carbon;
+
     $no=1;
-    $bulan=date('F');
+    $bulan= Carbon::now()
 @endphp
 
-<h1 class="justify">Data Penghuni Kost Bulan {{ $bulan }}</h1>
+<h1 class="justify">Data Penghuni Kost Bulan {{ $bulan->isoFormat("MMMM")  }}</h1>
 
 <table id="customers">
   <tr>
@@ -53,7 +55,7 @@
     <td>{{ $row->no_kamar }}</td>
     <td>{{ $row->tipe_kamar }}</td>
     <td>{{ $row->sewa }}</td>
-    <td>{{ $row->created_at }}</td>
+    <td>{{ $row->created_at->isoFormat("D MMMM Y") }}</td>
 </tr>   
   @endforeach
   <tr>
@@ -66,6 +68,6 @@
     <td>{{ $no-1}}</td>
     </tr>  
 </table>
-
+    Dicetak Pada {{ $bulan }}
 </body>
 </html>
