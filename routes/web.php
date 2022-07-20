@@ -7,7 +7,9 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\OccupantController;
 use App\Http\Controllers\ComplaintController;
 use App\Http\Controllers\InvoiceController;
+use App\Models\Complaint;
 use App\Models\Invoice;
+use App\Models\Payment;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,7 +36,9 @@ Route::group(['middleware' => ['auth:user', 'ceklevel:pemilik']], function () {
 Route::group(['middleware' => ['auth:user', 'ceklevel:pemilik,pengelola']], function () {
     Route::get('/dashboard', function () {
         $jumlahpenghuni = Occupant::count();
-        return view('welcome', compact('jumlahpenghuni'));
+        $jumlahbayar = Payment::where('bukti_pembayaran', '!=', '0')->count();
+        $jumlahkeluhan = Complaint::where('status', '=', 'Belum Diperbaiki')->count();
+        return view('welcome', compact('jumlahpenghuni', 'jumlahbayar', 'jumlahkeluhan'));
     });
 
 

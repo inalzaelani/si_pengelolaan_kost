@@ -11,11 +11,12 @@ use Carbon\Carbon;
 //  $tanggalbayar = Carbon::create(Auth::guard('occupant')->user()->tanggal_bayar); 
    
 
-//  $sisahari = $tanggalhariini->diff($tanggalbayar)->format("%a")+1;
+
 
 $created = new Carbon(Auth::guard('occupant')->user()->tanggal_bayar);
 $now = Carbon::today();
-$sisahari = ($now->diff($created)->d)
+// $sisahari = ($now->diff($created)->d)
+$sisahari = $now->diff($created)->format("%a");
 
 @endphp 
 {{-- @dd($sisahari) --}}
@@ -24,7 +25,7 @@ $sisahari = ($now->diff($created)->d)
 @if($now->diff($created)->invert>0)
 <div class="small-box bg-danger">
     <div class="inner">
-      <h3>Jatuh Tempo</h3>
+      <h3>{{ $sisahari }} Hari Lewat Dari Jatuh Tempo</h3>
       <p>Jatuh Tempo Bayar Sewa di {{  Auth::guard('occupant')->user()->tanggal_bayar}} <br>Segera Lakukan Pembayaran
       <a href="/tampilpembayaranpenghuni/{{ Auth::guard('occupant')->user()->id }}"> di sini </a></p>
     </div>

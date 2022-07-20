@@ -43,6 +43,7 @@
     <th>Jenis Kelamin</th>
     <th>No Kamar</th>
     <th>Tipe Kamar</th>
+    <th>Harga Kamar</th>
     <th>Sewa</th>
     <th>Tanggal Masuk</th>
   </tr>
@@ -54,11 +55,13 @@
     <td>{{ $row->jenis_kelamin }}</td>
     <td>{{ $row->no_kamar }}</td>
     <td>{{ $row->tipe_kamar }}</td>
+    <td>Rp.{{ number_format($row->harga_kamar,0,',','.') }}</td>
     <td>{{ $row->sewa }}</td>
     <td>{{ $row->created_at->isoFormat("D MMMM Y") }}</td>
 </tr>   
   @endforeach
   <tr>
+    <td></td>
     <td></td>
     <td></td>
     <td></td>

@@ -21,7 +21,7 @@ $skrg=Carbon::now();
 <body>
     <h1>Rumah Kost Budi Sari</h1>
 <br>
-PK/{{ $data->updated_at->isoFormat("D MMMM Y") }}/{{ $data->id }}
+PK/{{ $data->updated_at->isoFormat("DMMY") }}/{{ $data->id }}
 <br>
 <b>Telah Diterima <br></b>
 Dari:  {{ $data->nama }} <br>

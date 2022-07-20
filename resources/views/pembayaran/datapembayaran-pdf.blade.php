@@ -42,6 +42,8 @@
     <th>Nama</th>
     <th>No Kamar</th>
     <th>Tanggal Pembayaran</th>
+    <th>Harga Kamar Perbulan</th>
+    <th>Sewa</th>
     <th>Jumlah Pembayaran</th>
   </tr>
   @php
@@ -54,6 +56,8 @@
     <td>{{ $row->nama }}</td>
     <td>{{ $row->no_kamar }}</td>
     <td>{{ (new Carbon($row->updated_at ))->isoFormat("D MMMM Y") }}</td>
+    <td>Rp. {{ number_format($row->harga_kamar,0,',','.') }}</td>
+    <td>{{ $row->sewa }}</td>
     <td>Rp. {{ number_format($row->total_bayar,0,',','.') }}</td>
 </tr>
 @php
@@ -64,6 +68,8 @@
 
   @endforeach
   <tr>
+    <td></td>
+    <td></td>
     <td></td>
     <td></td>
     <td></td>

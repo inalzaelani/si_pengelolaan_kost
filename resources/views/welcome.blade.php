@@ -6,10 +6,23 @@
     <div class="row">
       <div class="col-lg-3 col-6">
         <!-- small box -->
+      <div class="small-box bg-success">
+        <div class="inner">
+          <h3>{{ $jumlahkeluhan }}</h3>
+          <p>Keluhan Masuk</p>
+        </div>
       </div>
+    </div>
       <!-- ./col -->
       <div class="col-lg-3 col-6">
         <!-- small box -->
+        <div class="small-box bg-success">
+          <div class="inner">
+            <h3>{{ $jumlahbayar }}</h3>
+
+            <p>Pembayaran Masuk</p>
+          </div>
+        </div>
       </div>
       <!-- ./col -->
       <div class="col-lg-3 col-6">

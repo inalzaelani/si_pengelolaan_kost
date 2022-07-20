@@ -34,7 +34,7 @@ $no=1;
 $bulan=Carbon::now();
 @endphp
 
-<h1 class="justify">Data Penghuni Kost Bulan {{ $bulan->isoFormat("MMMM") }}</h1>
+<h1 class="justify">Data Keluhan Kost Bulan {{ $bulan->isoFormat("MMMM") }}</h1>
 
 <table id="customers">
   <tr>
@@ -43,6 +43,7 @@ $bulan=Carbon::now();
     <th>Keluhan Diterima</th>
     <th>No Kamar</th>
     <th>Keluhan</th>
+    <th>Status Perbaikan</th>
   </tr>
 
   @foreach ($data as $row)
@@ -50,9 +51,10 @@ $bulan=Carbon::now();
   <tr>
     <td>{{ $no++ }}</td>
     <td>{{ $row->nama }}</td>
-    <td>{{ $row->updated_at->isoFormat("dddd,dd MMMM yy") }}</td>
+    <td>{{ $row->updated_at}}</td>
     <td>{{ $row->no_kamar }}</td>
     <td>{{ $row->keluhan }}</td>
+    <td>{{ $row->status }}</td>
   </tr>   
   @endif
   @endforeach
