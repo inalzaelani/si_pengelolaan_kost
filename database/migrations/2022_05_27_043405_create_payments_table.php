@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('bukti_pembayaran');
             $table->integer('no_kamar');
+            $table->string('status');
             $table->timestamps();
         });
     }

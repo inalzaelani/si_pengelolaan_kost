@@ -12,40 +12,27 @@
           <form action="/updatepembayaran/{{ $data->id }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">Nama</label>
-              <input type="text" class="form-control" id="username" name="nama" aria-describedby="emailHelp" value="{{ $data->nama }}">
-            </div>
-            @error('no_kamar')
-            <div class="alert alert-danger">{{ "Kamar Telah Terisi, Silakan pilih kamar lain!" }}</div>
-            @enderror
+              <label for="exampleInputEmail1" class="form-label">Nama : {{ $data->nama }}</label>
             <div class="mb-3">
-              <label for="no_kamar" class="form-label">Nomor Kamar (1-25)</label>
-              <input type="number" name="no_kamar" class="form-control" id="no_kamar" value="{{ $data->no_kamar }}" onkeyup="add();">
+              <label for="no_kamar" class="form-label">Nomor Kamar: {{ $data->no_kamar }}  </label>
             </div>
             <div class="mb-3">
-              <label for="no_kamar" class="form-label">Tipe Kamar</label>
-              <input type="text" name="tipe_kamar" class="form-control" id="tipe_kamar" value="{{ $data->tipe_kamar }}" onkeyup="add();">
+              <label for="no_kamar" class="form-label">Tipe Kamar : {{ $data->tipe_kamar }}</label>
             </div>
             <div class="mb-3">
-              <label for="no_kamar" class="form-label">Harga Kamar</label>
-              <input type="number" name="harga_kamar" class="form-control" id="harga_kamar" value="{{ $data->harga_kamar }}" onkeyup="add();">
+              <label for="no_kamar" class="form-label">Harga Kamar : Rp. {{ number_format($data->harga_kamar,0,',','.') }} </label>
             </div>
             <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">Sewa</label>
-              <select class="form-select" name="sewa" aria-label="Default select example">
-                <option selected>{{ $data->sewa }}</option>
-                <option value="Bulanan">Bulanan</option>
-                <option value="Tahunan">Tahunan</option>
-              </select>
+              <label for="exampleInputEmail1" class="form-label">Sewa : {{ $data->sewa }}</label>
+            </div>
+            <div class="mb-3">
+              <label for="no_kamar" class="form-label">Total bayar : {{ $data->total_bayar }}</label>
             </div>
              <div class="mb-3">
                             <label for="no_kamar" class="form-label">Tanggal Bayar Berikutnya</label>
                             <input type="date" name="tanggal_bayar" class="form-control" id="tanggal_bayar" value="{{ $data->tanggal_bayar }}" onkeyup="sewa()">
                           </div>
-                          <div class="mb-3">
-                            <label for="no_kamar" class="form-label">Total bayar</label>
-                            <input type="text" name="total_bayar" class="form-control" id="total_bayar" value="{{ $data->total_bayar }}" onkeyup="sewa()">
-                          </div>
+                         
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>
         </div>

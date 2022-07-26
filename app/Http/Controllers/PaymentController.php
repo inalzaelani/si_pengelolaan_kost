@@ -40,10 +40,17 @@ class PaymentController extends Controller
 
     public function updatepembayaran(Request $request, $id)
     {
-        $data = Invoice::find($id);
-        $data->update($request->all());
+        $data = Payment::find($id);
+        $data->update([
+            'status' => $request->status = "Terkonfirmasi",
+        ]);
+
         $data2 = Occupant::find($id);
         $data2->update($request->all());
+
+        $data3 = Invoice::find($id);
+        $data3->update($request->all());
+
         return redirect()->route('pembayaran')->with('success', 'Data Berhasil Dikonfirmasi');
     }
 
@@ -73,6 +80,7 @@ class PaymentController extends Controller
         $data = Payment::find($id);
         $data->update([
             'bukti_pembayaran' => $request->pembayaran = 0,
+            'status' => $request->status = 0,
         ]);
 
         return redirect()->route('pembayaran');

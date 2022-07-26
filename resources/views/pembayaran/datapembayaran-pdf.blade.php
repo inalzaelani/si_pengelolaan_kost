@@ -50,7 +50,7 @@
       $sum=0;
   @endphp
   @foreach ($data as $row)
-    @if($row->bukti_pembayaran!=0)
+    @if($row->bukti_pembayaran!=0 && $row->status!=0)
 <tr>
     <td>{{ $no++ }}</td>
     <td>{{ $row->nama }}</td>

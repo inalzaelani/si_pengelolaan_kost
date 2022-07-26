@@ -36,7 +36,7 @@ Route::group(['middleware' => ['auth:user', 'ceklevel:pemilik']], function () {
 Route::group(['middleware' => ['auth:user', 'ceklevel:pemilik,pengelola']], function () {
     Route::get('/dashboard', function () {
         $jumlahpenghuni = Occupant::count();
-        $jumlahbayar = Payment::where('bukti_pembayaran', '!=', '0')->count();
+        $jumlahbayar = Payment::where('bukti_pembayaran', '!=', '0')->where('status', '=', '0')->count();
         $jumlahkeluhan = Complaint::where('status', '=', 'Belum Diperbaiki')->count();
         return view('welcome', compact('jumlahpenghuni', 'jumlahbayar', 'jumlahkeluhan'));
     });

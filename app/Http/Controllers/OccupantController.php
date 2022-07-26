@@ -61,6 +61,7 @@ class OccupantController extends Controller
             [
                 "no_kamar" => $request->no_kamar,
                 "bukti_pembayaran" => $request->bukti_pembayaran = 0,
+                "status" => $request->status = 0,
             ]
         );
         $data3 = Complaint::create(
